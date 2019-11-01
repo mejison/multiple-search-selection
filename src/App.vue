@@ -1,28 +1,105 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="box">
+    <multiple-search 
+      label="Account category"
+      description="E.g. makeup artist, marketing agency, etc."
+      :required="true"
+      :options="options"
+      @change="onChangeHandler"
+      />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MultipleSearch from './components/MultipleSearch.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
-  }
+    MultipleSearch
+  },
+  data() {
+    return {
+      options: [
+        {
+          id: 1, 
+          title: 'Business',
+          children: [
+            {
+              id: 2,
+              title: 'Mining',
+              children: [
+                {
+                  id: 3,
+                  title: 'Traded Market',
+                },
+              ],
+            },
+            {
+              id: 4,
+              title: 'Financial',
+              children: [
+                {
+                  id: 5,
+                  title: 'Commercial',
+                },
+                {
+                  id: 6,
+                  title: 'Credit',
+                },
+                {
+                  id: 9,
+                  title: 'Other',
+                },
+              ],
+            },
+          ]
+        },
+        {
+          id: 10, 
+          title: 'Interest',
+          children: [
+            {
+              id: 11,
+              title: 'Science',
+              children: [
+                {
+                  id: 12, 
+                  title: 'Asteroid mining',
+                },
+                {
+                  id: 13, 
+                  title: 'Astronautics',
+                },
+                {
+                  id: 14, 
+                  title: 'Mars colonization',
+                },
+              ],
+            },
+            {
+              id: 15,
+              title: 'Science fiction',
+              children: [],
+            },
+            {
+              id: 16,
+              title: 'Science research',
+              children: [],
+            }
+          ]
+        },
+      ]
+    }
+  },
+  methods: {
+    onChangeHandler() {
+
+    }
+  },
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  @import "./main.css";
 </style>
